@@ -22,22 +22,5 @@ def get_profile(username: str) -> dict:
             'Username': username
         }
     )
-    return profile     
+    return profile['Item']     
         
-
-
-        
-#testing
-def test_update_profile():
-    test_event = {
-        'requestContext': {
-            'identity': {
-                'cognitoIdentityId': '0893be13-3d6c-489e-9029-63e4b28945cb'
-            }
-        }
-    }
-
-    print(lambda_handler(test_event, {}))
-
-test_update_profile()
-

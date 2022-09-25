@@ -2,8 +2,6 @@ import boto3
 from boto3.dynamodb.conditions import Key
 import os
 
-os.environ['DYNAMO_TABLE_NAME'] = 'Meals'
-
 TABLE_NAME = os.environ['DYNAMO_TABLE_NAME']
 dynamodb = boto3.resource('dynamodb')
 KEY_NAME = 'Username'
@@ -29,14 +27,3 @@ def get_meals(username: str) -> list[dict]:
         KeyConditionExpression=Key(KEY_NAME).eq(username)
     )
     return response['Items']
-
-test_event = {
-    'requestContext': {
-        'identity': {
-            'cognitoIdentityId': '123123'
-        }
-    }
-}
-
-response = lambda_handler(test_event, {})
-print(response)

@@ -31,4 +31,4 @@ def get_goal(username: str, goal_id: str) -> dict:
             'Time': goal_id
         }
     )
-    return goal
+    return goal['Item']
